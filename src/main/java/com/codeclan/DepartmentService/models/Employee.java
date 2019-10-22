@@ -1,6 +1,7 @@
 package com.codeclan.DepartmentService.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class Employee {
     @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last-name")
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "employee_number")
@@ -43,14 +44,14 @@ public class Employee {
                     nullable = false)
             }
     )
-
     private List<Project> projects;
 
-    public Employee(String firstName, String lastName, int employeeNumber) {
+    public Employee(String firstName, String lastName, int employeeNumber, Department department) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.employeeNumber = employeeNumber;
         this.projects = new ArrayList<>();
+        this.department = department;
     }
 
     public Employee(){
@@ -98,5 +99,13 @@ public class Employee {
 
     public void addProject(Project project){
         this.projects.add(project);
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }

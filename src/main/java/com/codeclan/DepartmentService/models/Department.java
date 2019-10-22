@@ -18,7 +18,7 @@ public class Department {
     private String name;
 
     @JsonIgnoreProperties("department")
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "department")
     private List<Employee> employees;
 
     public Department(String name) {

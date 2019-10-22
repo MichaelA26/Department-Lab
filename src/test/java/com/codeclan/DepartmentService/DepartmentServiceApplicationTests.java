@@ -1,5 +1,8 @@
 package com.codeclan.DepartmentService;
 
+import com.codeclan.DepartmentService.models.Department;
+import com.codeclan.DepartmentService.models.Employee;
+import com.codeclan.DepartmentService.models.Project;
 import com.codeclan.DepartmentService.repositories.DepartmentRepository;
 import com.codeclan.DepartmentService.repositories.EmployeeRepository;
 import com.codeclan.DepartmentService.repositories.ProjectRepository;
@@ -23,7 +26,17 @@ class DepartmentServiceApplicationTests {
 	ProjectRepository projectRepository;
 
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
+	}
+
+	@Test
+	public void createEmployeeandDepartmentAndProject(){
+		Department department = new Department("Software");
+		departmentRepository.save(department);
+		Employee employee = new Employee("Billy", "Roundaboot", 1, department);
+		employeeRepository.save(employee);
+		Project project = new Project("Cool Project", 100);
+		projectRepository.save(project);
 	}
 
 
